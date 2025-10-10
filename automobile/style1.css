@@ -1,0 +1,73 @@
+/* General Navbar */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+.navbar {
+  background: black;
+  padding: 15px;
+}
+.navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+.navbar li {
+  margin-right: 20px;
+}
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+.navbar a:hover {
+  color: gold;
+}
+
+/* Registration Page Background */
+.reg-page {
+  background: url("https://wallpapercave.com/wp/wp2469732.jpg") no-repeat center center/cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Registration Form Box */
+.form-container {
+  background: rgba(0,0,0,0.7);
+  padding: 30px;
+  border-radius: 10px;
+  width: 320px;
+  color: white;
+}
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: gold;
+}
+.form-container label {
+  display: block;
+  margin-top: 10px;
+}
+.form-container input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 5px;
+}
+.form-container button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background: gold;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.form-container button:hover {
+  background: darkorange;
+}

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red Clover| Staff Signup</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-image: url(bugatti.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(0, 0, 0, 0.85);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+       
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ff4d00;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+             position: relative;
+            cursor: pointer;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: #ff4d00;
+        }
+         
+        .logo-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: rgba(15, 15, 15, 0.98);
+            min-width: 220px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+            z-index: 1000;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #ff4d00;
+            margin-top: 10px;
+            transition: opacity 0.3s ease;
+        }
+        
+        .dropdown-content a {
+            color: #fff;
+            padding: 14px 18px;
+            text-decoration: none;
+            display: block;
+            transition: 0.3s;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #ff4d00;
+            padding-left: 22px;
+        }
+        
+        .dropdown-content a i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .show-dropdown {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ff4d00;
+        }
+        
+        .nav-links a.active {
+            background: #ff4d00;
+            color: #fff;
+        }
+        /* --- Profile Dropdown --- */
+        .profile-dropdown {
+            position: relative;
+            padding-top: 10px;
+
+        }
+
+        .profile-dropdown i {
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        .profile-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 35px;
+            background: rgba(20, 20, 20, 0.98);
+            border: 1px solid #ff4d00;
+            border-radius: 8px;
+            min-width: 160px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            z-index: 100;
+        }
+
+        .profile-content a {
+            display: block;
+            padding: 12px 15px;
+            color: #fff;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .profile-content a:hover {
+            background: #ff4d00;
+            padding-left: 20px;
+        }
+
+        .show-dropdown {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin-top: 40px; margin-left: 400px; margin-right: 400px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            flex: 1;
+        }
+        
+        .login-container {
+            background: rgba(15, 15, 15, 0.85);
+            border-radius: 15px;
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 77, 0, 0.3);
+        }
+        
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .login-header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: #ff4d00;
+        }
+        
+        .login-header p {
+            color: #aaa;
+            font-size: 16px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #ddd;
+        }
+        
+        .input-icon {
+            position: relative;
+        }
+        
+        .input-icon i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ff4d00;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 15px 15px 15px 45px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(50, 50, 50, 0.7);
+            color: #fff;
+            font-size: 16px;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #ff4d00;
+            box-shadow: 0 0 0 3px rgba(255, 77, 0, 0.2);
+            background: rgba(60, 60, 60, 0.7);
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: #ff4d00; /* This ensures the button is orange by default */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            background: #e04400;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 77, 0, 0.4);
+        }
+        
+        .login-link {
+            text-align: center;
+            margin-top: 25px;
+            color: #aaa;
+        }
+        
+        .login-link a {
+            color: #ff4d00;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.85);
+            margin-top: 40px;
+            color: #aaa;
+        }
+        
+        .social-icons {
+            margin-top: 10px;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            margin: 0 10px;
+            color: #ff4d00;
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 15px;
+                gap: 10px;
+            }
+            
+            .login-container {
+                padding: 30px 20px;
+            }
+            
+            
+        }
+    </style>
+</head>
+
+<body>
+    
+   <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo-dropdown">
+      <div class="logo" onclick="toggleDropdown()">
+        <i class="fas fa-car"></i>
+        <span>Red Clover</span>
+        <i class="fas fa-chevron-down" style="margin-left: 10px; font-size: 16px;"></i>
+      </div>
+      <div class="dropdown-content" id="dropdownMenu">
+        <a href="home.php"><i class="fas fa-home"></i> Home</a>
+        <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+        <a href="services.php"><i class="fas fa-tools"></i> Services</a>
+        <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="staff_login.html"><i class="fas fa-sign-in-alt"></i> Staff Login</a>
+        <a href="staff_signup.html"><i class="fas fa-sign-in-alt"></i> Staff Signup</a>
+        <a href="user_login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+        <a href="user_registration.html"><i class="fas fa-user-plus"></i> Register</a>
+        <a href="admin_login.php"><i class="fas fa-tachometer-alt"></i> Admin Dashboard</a>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="home.php" class="active">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.php">Services</a>
+      <a href="contact.html">Contact</a>
+     <div class="profile-dropdown">
+                <i class="fas fa-user-circle" onclick="toggleProfileDropdown()"></i>
+                <div class="profile-content" id="profileMenu">
+                    <a href="user_login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+                    <a href="user_registration.html"><i class="fas fa-user-plus"></i> Register</a>
+                </div>
+            </div>
+    </div>
+  </nav>
+
+    <div class="container">
+        <div class="login-container">
+            <div class="login-header">
+                <h1>Staff Signup</h1>
+            </div>
+
+            <form id="loginForm" method="POST" action="Staff_signup.php">
+                <div class="form-group">
+              <label for="staffname">Staffname</label>
+                    <div class="input-icon">
+                        
+                        <input type="text" id="staffname" name="staff_name" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-icon">
+                        
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <br>
+                     <div class="form-group">
+                    <label for="phone no">Phone No:</label>
+                    <div class="input-icon">
+                        
+                        <input type="number" id="phone no" name="phone"required>
+                    </div>
+                    <br>
+                       <div class="form-group">
+                    <label for="email">Email</label>
+                    <div class="input-icon">
+                        
+                        <input type="email" id="email" name="email"required>
+                    </div>
+                    <br>
+                       <div class="form-group">
+                    <label for="departmentname">Department Name</label>
+                    <div class="input-icon">
+                        
+                        <input type="text" id="departmentname" name="department_name"required>
+                    </div>
+                    <br>
+                <button type="submit" class="btn">Signup</button>
+            </form>
+
+            <div class="login-link">
+                <p>Already have an account? <a href="#"></a></p>
+                 <a href="http://localhost/automobile/staff_login.html">Login</a>
+            </div>
+        </div>
+    </div>
+     <script>
+        // Set current date
+        const now = new Date();
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('current-date').textContent = now.toLocaleDateString('en-US', options);
+        
+        // Toggle dropdown menu
+        function toggleDropdown() {
+            const dropdown = document.getElementById('dropdownMenu');
+            dropdown.classList.toggle('show-dropdown');
+        }
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('dropdownMenu');
+            const logo = document.querySelector('.logo');
+            
+            if (!logo.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.classList.remove('show-dropdown');
+            }
+        });
+        
+        // Keep dropdown open when hovering over it
+        document.getElementById('dropdownMenu').addEventListener('click', function(event) {
+            event.stopPropagation();
+        });
+        
+        // Sample chart data (in a real app, you would use a charting library)
+        function initCharts() {
+            console.log("Charts would be initialized here with a charting library");
+        }
+        
+        // Initialize the dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            initCharts();
+        });
+    </script>
+     <script>
+        function toggleProfileDropdown() {
+            const profileMenu = document.getElementById('profileMenu');
+            profileMenu.classList.toggle('show-dropdown');
+        }
+
+        document.addEventListener('click', function (event) {
+            const profileMenu = document.getElementById('profileMenu');
+            const profileIcon = document.querySelector('.profile-dropdown i');
+
+            if (!profileIcon.contains(event.target) && !profileMenu.contains(event.target)) {
+                profileMenu.classList.remove('show-dropdown');
+            }
+        });
+    </script>
+</body>
+</html>

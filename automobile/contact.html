@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red Clover | Contact Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #0f0f0f;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(0, 0, 0, 0.85);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ff4d00;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: #ff4d00;
+        }
+        
+        .logo-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: rgba(15, 15, 15, 0.98);
+            min-width: 220px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+            z-index: 1000;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #ff4d00;
+            margin-top: 10px;
+            transition: opacity 0.3s ease;
+        }
+        
+        .dropdown-content a {
+            color: #fff;
+            padding: 14px 18px;
+            text-decoration: none;
+            display: block;
+            transition: 0.3s;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #ff4d00;
+            padding-left: 22px;
+        }
+        
+        .dropdown-content a i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .show-dropdown {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ff4d00;
+        }
+        
+        .nav-links a.active {
+            background: #ff4d00;
+            color: #fff;
+        }
+        /* --- Profile Dropdown --- */
+        .profile-dropdown {
+            position: relative;
+            padding-top: 10px;
+
+        }
+
+        .profile-dropdown i {
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        .profile-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 35px;
+            background: rgba(20, 20, 20, 0.98);
+            border: 1px solid #ff4d00;
+            border-radius: 8px;
+            min-width: 160px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            z-index: 100;
+        }
+
+        .profile-content a {
+            display: block;
+            padding: 12px 15px;
+            color: #fff;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .profile-content a:hover {
+            background: #ff4d00;
+            padding-left: 20px;
+        }
+
+        .show-dropdown {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Hero Section */
+        .contact-hero {
+            height: 40vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: #ff4d00;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #ddd;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 50px;
+            background: rgba(20, 20, 20, 0.95);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .contact-info {
+            padding-right: 30px;
+        }
+        
+        .section-title {
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #ff4d00;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #aaa;
+            font-size: 1.1rem;
+            max-width: 700px;
+        }
+        
+        .info-card {
+            background: rgba(30, 30, 30, 0.8);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 4px solid #ff4d00;
+        }
+        
+        .info-card h3 {
+            font-size: 1.5rem;
+            color: #ff4d00;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-card h3 i {
+            margin-right: 15px;
+        }
+        
+        .info-item {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        
+        .info-item i {
+            color: #ff4d00;
+            font-size: 1.2rem;
+            margin-right: 15px;
+            min-width: 20px;
+        }
+        
+        .info-content {
+            color: #ddd;
+        }
+        
+        .info-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: #ff4d00;
+        }
+        
+        .info-content p {
+            color: #aaa;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 77, 0, 0.1);
+            color: #ff4d00;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+        
+        .social-links a:hover {
+            background: #ff4d00;
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            background: rgba(30, 30, 30, 0.8);
+            border-radius: 10px;
+            padding: 30px;
+            border-left: 4px solid #ff4d00;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #ddd;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(50, 50, 50, 0.7);
+            color: #fff;
+            font-size: 16px;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #ff4d00;
+            box-shadow: 0 0 0 3px rgba(255, 77, 0, 0.2);
+            background: rgba(60, 60, 60, 0.7);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            background: #ff4d00;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .btn:hover {
+            background: #e04400;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 77, 0, 0.4);
+        }
+        
+        /* Map Section */
+        .map-section {
+            padding: 0 50px 80px;
+            background: rgba(20, 20, 20, 0.95);
+        }
+        
+        .map-container {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            height: 450px;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 50px;
+            background: rgba(15, 15, 15, 0.95);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: rgba(30, 30, 30, 0.8);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            border-left: 4px solid #ff4d00;
+        }
+        
+        .faq-question {
+            padding: 20px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .faq-question:hover {
+            background: rgba(255, 77, 0, 0.1);
+        }
+        
+        .faq-answer {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-answer.active {
+            padding: 20px 30px;
+            max-height: 200px;
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 80px 50px;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            color: #ff4d00;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            color: #ddd;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+        
+        .btn-light {
+            background: transparent;
+            border: 2px solid #ff4d00;
+            color: #ff4d00;
+        }
+        
+        .btn-light:hover {
+            background: #ff4d00;
+            color: white;
+        }
+        
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.95);
+            padding: 50px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            color: #ff4d00;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .footer-column p, .footer-column li {
+            color: #aaa;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #ff4d00;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+        }
+        
+        .footer-bottom p {
+            color: #aaa;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #333;
+            color: #ff4d00;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background: #ff4d00;
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                padding-right: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 15px;
+                gap: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .contact-hero {
+                height: auto;
+                padding: 80px 20px;
+            }
+            
+            .contact-section, .map-section, .faq-section, .cta {
+                padding: 60px 20px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .map-container {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo-dropdown">
+      <div class="logo" onclick="toggleDropdown()">
+        <i class="fas fa-car"></i>
+        <span>Red Clover</span>
+        <i class="fas fa-chevron-down" style="margin-left: 10px; font-size: 16px;"></i>
+      </div>
+      <div class="dropdown-content" id="dropdownMenu">
+        <a href="home.php"><i class="fas fa-home"></i> Home</a>
+        <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+        <a href="services.php"><i class="fas fa-tools"></i> Services</a>
+        <a href="contact.html"  class="active"><i class="fas fa-envelope"></i> Contact</a>
+        <a href="staff_login.html"><i class="fas fa-sign-in-alt"></i> Staff Login</a>
+        <a href="staff_signup.html"><i class="fas fa-sign-in-alt"></i> Staff Signup</a>
+        <a href="user_login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+        <a href="user_registration.html"><i class="fas fa-user-plus"></i> Register</a>
+        <a href="admin_login.php"><i class="fas fa-tachometer-alt"></i> Admin Dashboard</a>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="home.php">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.php">Services</a>
+      <a href="contact.html" class="active">Contact</a>
+     <div class="profile-dropdown">
+                <i class="fas fa-user-circle" onclick="toggleProfileDropdown()"></i>
+                <div class="profile-content" id="profileMenu">
+                    <a href="user_login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+                    <a href="user_registration.html"><i class="fas fa-user-plus"></i> Register</a>
+                </div>
+            </div>
+    </div>
+  </nav>
+
+    <!-- Hero Section -->
+    <section class="contact-hero">
+        <div class="hero-content">
+            <h1>Get In Touch</h1>
+            <p>We're here to answer any questions and provide the expert automotive service you deserve</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="section-title">
+            <h2>Contact Us</h2>
+            <p>Reach out to us through any of the following methods. Our team is ready to assist you.</p>
+        </div>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="info-card">
+                    <h3><i class="fas fa-map-marker-alt"></i> Visit Us</h3>
+                    <div class="info-item">
+                        <i class="fas fa-location-arrow"></i>
+                        <div class="info-content">
+                            <h4>Main Office</h4>
+                            <p>Red Clover park,United kingdom</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h3><i class="fas fa-phone"></i> Call Us</h3>
+                    <div class="info-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div class="info-content">
+                            <h4>Primary Phone</h4>
+                            <p>+91 920729xxxx</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-mobile-alt"></i>
+                        <div class="info-content">
+                            <h4>Emergency Line</h4>
+                            <p>+91 6946848xx</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h3><i class="fas fa-envelope"></i> Email Us</h3>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div class="info-content">
+                            <h4>General Inquiries</h4>
+                            <p>info@redclover.com</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div class="info-content">
+                            <h4>Service Department</h4>
+                            <p>service@redclover.com</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h3><i class="fas fa-clock"></i> Hours of Operation</h3>
+                    <div class="info-item">
+                        <i class="fas fa-calendar-day"></i>
+                        <div class="info-content">
+                            <h4>Monday - Friday</h4>
+                            <p>8:00 AM - 6:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-calendar-day"></i>
+                        <div class="info-content">
+                            <h4>Saturday</h4>
+                            <p>9:00 AM - 4:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-calendar-day"></i>
+                        <div class="info-content">
+                            <h4>Sunday</h4>
+                            <p>Closed</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h3><i class="fas fa-share-alt"></i> Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h3 style="color: #ff4d00; margin-bottom: 25px; font-size: 1.5rem;">Send Us a Message</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" class="form-control" placeholder="Your Name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" placeholder="Your Email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" class="form-control" placeholder="Your Phone">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" class="form-control" placeholder="Message Subject" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" class="form-control" placeholder="How can we help you?" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="section-title">
+            <h2>Find Us</h2>
+            <p>Visit our location for a personalized consultation and service experience</p>
+        </div>
+        
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00425872426637!3d40.740769871389115!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf5c8eef01%3A0x41c798e5c18c60a5!2s123%20Automotive%20Way%2C%20New%20York%2C%20NY%2010001%2C%20USA!5e0!3m2!1sen!2s!4v1692384205047!5m2!1sen!2s" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="section-title">
+            <h2>Frequently Asked Questions</h2>
+            <p>Quick answers to common questions about our services and processes</p>
+        </div>
+        
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    How soon can I get an appointment? <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We typically offer same-day or next-day appointments for most services. Emergency repairs are prioritized and can often be accommodated the same day.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    What forms of payment do you accept? <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We accept all major credit cards, debit cards, cash, and offer financing options for larger repairs. We also work with most extended warranty companies.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Do you offer loaner vehicles? <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, we have a fleet of loaner vehicles available for customers whose repairs will take more than 24 hours. Availability is on a first-come, first-served basis.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Are your technicians certified? <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>All our technicians are ASE (Automotive Service Excellence) certified and receive ongoing training to stay current with the latest automotive technologies.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    What is your warranty policy? <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We offer a 12-month/12,000-mile warranty on all parts and labor for most repairs. Specific warranty details are provided with your service estimate.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <h2>Ready to Experience the Red Clover Difference?</h2>
+        <p>Schedule your service appointment today and discover why thousands of customers trust us with their vehicles</p>
+        <button class="btn btn-light">Book Appointment Now</button>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Red Clover</h3>
+                <p>Premium automobile services with a commitment to excellence, honesty, and customer satisfaction.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="http://127.0.0.1:5500/home.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">Oil Change</a></li>
+                    <li><a href="#">Brake Services</a></li>
+                    <li><a href="#">Engine Repair</a></li>
+                    <li><a href="#">Tire Services</a></li>
+                    <li><a href="#">AC Services</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Automotive Way, City, State 12345</p>
+                <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                <p><i class="fas fa-envelope"></i> info@redclover.com</p>
+                <p><i class="fas fa-clock"></i> Mon-Fri: 8:00 AM - 6:00 PM</p>
+                <p><i class="fas fa-clock"></i> Sat: 9:00 AM - 4:00 PM</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Red Clover Automobile Services. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle dropdown menu
+        function toggleDropdown() {
+            const dropdown = document.getElementById('dropdownMenu');
+            dropdown.classList.toggle('show-dropdown');
+        }
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('dropdownMenu');
+            const logo = document.querySelector('.logo');
+            
+            if (!logo.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.classList.remove('show-dropdown');
+            }
+        });
+        
+        // Keep dropdown open when clicking on it
+        document.getElementById('dropdownMenu').addEventListener('click', function(event) {
+            event.stopPropagation();
+        });
+        
+        // Toggle FAQ items
+        function toggleFaq(element) {
+            element.classList.toggle('active');
+            const answer = element.nextElementSibling;
+            answer.classList.toggle('active');
+        }
+        
+        // Form validation
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            if (name && email && subject && message) {
+                alert('Thank you for your message! We will get back to you soon.');
+                this.reset();
+            } else {
+                alert('Please fill in all required fields.');
+            }
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+     <script>
+        function toggleProfileDropdown() {
+            const profileMenu = document.getElementById('profileMenu');
+            profileMenu.classList.toggle('show-dropdown');
+        }
+
+        document.addEventListener('click', function (event) {
+            const profileMenu = document.getElementById('profileMenu');
+            const profileIcon = document.querySelector('.profile-dropdown i');
+
+            if (!profileIcon.contains(event.target) && !profileMenu.contains(event.target)) {
+                profileMenu.classList.remove('show-dropdown');
+            }
+        });
+    </script>
+</body>
+
+</html>

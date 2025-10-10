@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red Clover | Our Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #0f0f0f;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(0, 0, 0, 0.85);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ff4d00;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: #ff4d00;
+        }
+        
+        .logo-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: rgba(15, 15, 15, 0.98);
+            min-width: 220px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+            z-index: 1000;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #ff4d00;
+            margin-top: 10px;
+            transition: opacity 0.3s ease;
+        }
+        
+        .dropdown-content a {
+            color: #fff;
+            padding: 14px 18px;
+            text-decoration: none;
+            display: block;
+            transition: 0.3s;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #ff4d00;
+            padding-left: 22px;
+        }
+        
+        .dropdown-content a i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .show-dropdown {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ff4d00;
+        }
+        
+        .nav-links a.active {
+            background: #ff4d00;
+            color: #fff;
+        }
+        
+        /* Hero Section */
+        .services-hero {
+            height: 50vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: #ff4d00;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #ddd;
+        }
+        
+        /* Services Section */
+        .services-section {
+            padding: 80px 50px;
+            background: rgba(20, 20, 20, 0.95);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #ff4d00;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #aaa;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: rgba(30, 30, 30, 0.8);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid #ff4d00;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,77,0,0.1) 0%, rgba(255,77,0,0) 100%);
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(255, 77, 0, 0.2);
+        }
+        
+        .service-card:hover::before {
+            opacity: 1;
+        }
+        
+        .service-card i {
+            font-size: 3rem;
+            color: #ff4d00;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .service-card p {
+            color: #aaa;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .service-features {
+            text-align: left;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .service-features li {
+            color: #ddd;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .service-features li i {
+            font-size: 1rem;
+            margin-right: 10px;
+            margin-bottom: 0;
+            color: #ff4d00;
+        }
+        
+        .service-price {
+            font-size: 1.5rem;
+            color: #ff4d00;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .service-price span {
+            font-size: 1rem;
+            color: #aaa;
+            font-weight: 400;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            background: #ff4d00;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .btn:hover {
+            background: #e04400;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 77, 0, 0.4);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #ff4d00;
+            color: #ff4d00;
+        }
+        
+        .btn-outline:hover {
+            background: #ff4d00;
+            color: white;
+        }
+        
+        /* Service Categories */
+        .service-categories {
+            padding: 80px 50px;
+            background: rgba(15, 15, 15, 0.95);
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .category-card {
+            background: rgba(30, 30, 30, 0.8);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border-left: 4px solid #ff4d00;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 77, 0, 0.2);
+        }
+        
+        .category-card i {
+            font-size: 2.5rem;
+            color: #ff4d00;
+            margin-bottom: 20px;
+        }
+        
+        .category-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .category-card p {
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 80px 50px;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            color: #ff4d00;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            color: #ddd;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.95);
+            padding: 50px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            color: #ff4d00;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .footer-column p, .footer-column li {
+            color: #aaa;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #ff4d00;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+        }
+        
+        .footer-bottom p {
+            color: #aaa;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #333;
+            color: #ff4d00;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background: #ff4d00;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Booking Modal Styles */
+        .booking-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 1000;
+            overflow: auto;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background-color: #1e1e1e;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            animation: modalopen 0.5s;
+            border: 2px solid #ff4d00;
+            box-shadow: 0 5px 30px rgba(255, 77, 0, 0.3);
+        }
+        
+        @keyframes modalopen {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #aaa;
+            transition: color 0.3s;
+        }
+        
+        .close-btn:hover {
+            color: #ff4d00;
+        }
+        
+        .modal-header {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .modal-header h2 {
+            color: #ff4d00;
+            font-size: 2rem;
+        }
+        
+        .modal-header p {
+            color: #aaa;
+            margin-top: 5px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #ddd;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #444;
+            border-radius: 6px;
+            font-size: 1rem;
+            background-color: #2c2c2c;
+            color: #fff;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #ff4d00;
+            outline: none;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .submit-btn {
+            background: #ff4d00;
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .submit-btn:hover {
+            background: #e04400;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 77, 0, 0.4);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .services-grid, .categories-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 15px;
+                gap: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .services-hero {
+                height: auto;
+                padding: 80px 20px;
+            }
+            
+            .services-section, .service-categories, .cta {
+                padding: 60px 20px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .services-grid, .categories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .modal-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo-dropdown">
+            <div class="logo" onclick="toggleDropdown()">
+                <i class="fas fa-car"></i>
+                <span>Red Clover</span>
+                <i class="fas fa-chevron-down" style="margin-left: 10px; font-size: 16px;"></i>
+            </div>
+            <div class="dropdown-content" id="dropdownMenu">
+                <a href="http://localhost/automobile/home.html"><i class="fas fa-home"></i> Home</a>
+                <a href="http://localhost/automobile/about.html"><i class="fas fa-info-circle"></i> About</a>
+                <a href="http://localhost/automobile/services.html" style="background: #ff4d00;"><i class="fas fa-tools"></i> Services</a>
+                <a href="http://localhost/automobile/contact.html"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="http://localhost/automobile/staff_login.html"><i class="fas fa-sign-in-alt"></i> Staff Login</a>
+                <a href="http://localhost/automobile/staff_signup.html"><i class="fas fa-sign-in-alt"></i> Staff Signup</a>
+                <a href="http://localhost/automobile/user_login.html"><i class="fas fa-sign-in-alt"></i> Login</a>
+                <a href="http://localhost/automobile/user_registration.html"><i class="fas fa-user-plus"></i> Register</a>
+                <a href="http://localhost/automobile/admin_dashboard.html"><i class="fas fa-tachometer-alt"></i> Admin Dashboard</a>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="http://localhost/automobile/home.html">Home</a>
+            <a href="http://localhost/automobile/about.html">About</a>
+            <a href="http://localhost/automobile/services.html" class="active">Services</a>
+            <a href="http://localhost/automobile/contact.html">Contact</a>
+            <a href="http://localhost/automobile/user_login.html">Login</a>
+            <a href="http://localhost/automobile/user_registration.html">Register</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="services-hero">
+        <div class="hero-content">
+            <h1>Our Premium Services</h1>
+            <p>Experience the finest automotive care with our comprehensive range of services designed to keep your vehicle running at its best.</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="section-title">
+            <h2>Comprehensive Automotive Services</h2>
+            <p>We offer a wide range of professional services to meet all your automotive needs</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-oil-can"></i>
+                <h3>Oil Change Service</h3>
+                <p>Keep your engine running smoothly with our premium oil change service.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Synthetic oil options available</li>
+                    <li><i class="fas fa-check"></i> Oil filter replacement</li>
+                    <li><i class="fas fa-check"></i> Fluid level inspection</li>
+                    <li><i class="fas fa-check"></i> 20-point inspection</li>
+                </ul>
+                <div class="service-price">From Rs549.99 <span>+ tax</span></div>
+                <button class="btn book-btn" data-service="Oil Change Service" data-price="549.99">Book Now</button>
+            </div>
+            
+            <div class="service-card">
+                <i class="fas fa-tools"></i>
+                <h3>Engine Repair</h3>
+                <p>Expert diagnostics and repair for all engine issues.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Computerized diagnostics</li>
+                    <li><i class="fas fa-check"></i> Engine tune-ups</li>
+                    <li><i class="fas fa-check"></i> Belt and hose replacement</li>
+                    <li><i class="fas fa-check"></i> Complete engine overhaul</li>
+                </ul>
+                <div class="service-price">From Rs99.99<span>+ parts</span></div>
+                <button class="btn book-btn" data-service="Engine Repair" data-price="99.99">Book Now</button>
+            </div>
+            
+            <div class="service-card">
+                <i class="fas fa-brake-warning"></i>
+                <h3>Brake Services</h3>
+                <p>Ensure your safety with our professional brake services.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Brake pad replacement</li>
+                    <li><i class="fas fa-check"></i> Rotor resurfacing or replacement</li>
+                    <li><i class="fas fa-check"></i> Brake fluid flush</li>
+                    <li><i class="fas fa-check"></i> Caliper service</li>
+                </ul>
+                <div class="service-price">From Rs1299.99<span>+ parts</span></div>
+                <button class="btn book-btn" data-service="Brake Services" data-price="1299.99">Book Now</button>
+            </div>
+            
+            <div class="service-card">
+                <i class="fas fa-tire"></i>
+                <h3>Tire Services</h3>
+                <p>Complete tire services for optimal performance and safety.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Tire rotation and balancing</li>
+                    <li><i class="fas fa-check"></i> Wheel alignment</li>
+                    <li><i class="fas fa-check"></i> Tire replacement</li>
+                    <li><i class="fas fa-check"></i> Puncture repair</li>
+                </ul>
+                <div class="service-price">From Rs529.99 <span>per tire</span></div>
+                <button class="btn book-btn" data-service="Tire Services" data-price="529.99">Book Now</button>
+            </div>
+            
+            <div class="service-card">
+                <i class="fas fa-car-battery"></i>
+                <h3>Battery Services</h3>
+                <p>Reliable battery testing, replacement, and maintenance.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> Battery testing</li>
+                    <li><i class="fas fa-check"></i> Battery replacement</li>
+                    <li><i class="fas fa-check"></i> Terminal cleaning</li>
+                    <li><i class="fas fa-check"></i> Charging system check</li>
+                </ul>
+                <div class="service-price">From Rs1129.99 <span>+ installation</span></div>
+                <button class="btn book-btn" data-service="Battery Services" data-price="1129.99">Book Now</button>
+            </div>
+            
+            <div class="service-card">
+                <i class="fas fa-fan"></i>
+                <h3>AC Services</h3>
+                <p>Stay cool with our professional air conditioning services.</p>
+                <ul class="service-features">
+                    <li><i class="fas fa-check"></i> AC performance check</li>
+                    <li><i class="fas fa-check"></i> Refrigerant recharge</li>
+                    <li><i class="fas fa-check"></i> Compressor repair</li>
+                    <li><i class="fas fa-check"></i> System diagnostics</li>
+                </ul>
+                <div class="service-price">From Rs729.99 <span>+ parts</span></div>
+                <button class="btn book-btn" data-service="AC Services" data-price="729.99">Book Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Categories -->
+    <section class="service-categories">
+        <div class="section-title">
+            <h2>Service Categories</h2>
+            <p>We specialize in these comprehensive automotive service categories</p>
+        </div>
+        <div class="categories-grid">
+            <div class="category-card">
+                <i class="fas fa-cog"></i>
+                <h3>Routine Maintenance</h3>
+                <p>Keep your vehicle in top condition with our scheduled maintenance services.</p>
+                <button class="btn btn-outline">Learn More</button>
+            </div>
+            
+            <div class="category-card">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h3>Emergency Repairs</h3>
+                <p>Fast and reliable repair services for when you need them most.</p>
+                <button class="btn btn-outline">Learn More</button>
+            </div>
+            
+            <div class="category-card">
+                <i class="fas fa-check-circle"></i>
+                <h3>Safety Inspections</h3>
+                <p>Comprehensive inspections to ensure your vehicle is safe to drive.</p>
+                <button class="btn btn-outline">Learn More</button>
+            </div>
+            
+            <div class="category-card">
+                <i class="fas fa-tachometer-alt"></i>
+                <h3>Performance Upgrades</h3>
+                <p>Enhance your vehicle's performance with our upgrade services.</p>
+                <button class="btn btn-outline">Learn More</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <h2>Ready to Schedule Your Service?</h2>
+        <p>Book your appointment online or give us a call to experience the Red Clover difference</p>
+        <button class="btn">Book Appointment Now</button>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Red Clover</h3>
+                <p>Premium automobile services with a commitment to excellence, honesty, and customer satisfaction.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="http://127.0.0.1:5500/home.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">Oil Change</a></li>
+                    <li><a href="#">Brake Services</a></li>
+                    <li><a href="#">Engine Repair</a></li>
+                    <li><a href="#">Tire Services</a></li>
+                    <li><a href="#">AC Services</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Automotive Way, City, State 12345</p>
+                <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                <p><i class="fas fa-envelope"></i> info@redclover.com</p>
+                <p><i class="fas fa-clock"></i> Mon-Fri: 8:00 AM - 6:00 PM</p>
+                <p><i class="fas fa-clock"></i> Sat: 9:00 AM - 4:00 PM</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Red Clover Automobile Services. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="booking-modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModal">&times;</span>
+            <div class="modal-header">
+                <h2 id="modalServiceName">Service Booking</h2>
+                <p>Please fill in your vehicle details to book this service</p>
+            </div>
+            <form id="bookingForm" method="POST" action="book_service.php">
+                <input type="hidden" id="serviceName" name="serviceName">
+                <input type="hidden" id="servicePrice" name="servicePrice">
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="regNo">Registration Number *</label>
+                        <input type="text" id="regNo" name="regNo" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="entryDate">Preferred Service Date *</label>
+                        <input type="date" id="entryDate" name="entryDate" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="vehicleName">Vehicle Name/Brand *</label>
+                        <input type="text" id="vehicleName" name="vehicleName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="vehicleModel">Vehicle Model *</label>
+                        <input type="text" id="vehicleModel" name="vehicleModel" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cost">Service Cost (Rs)</label>
+                    <input type="text" id="cost" name="cost" readonly>
+                </div>
+                
+                <div class="form-group">
+                    <label for="additionalNotes">Additional Notes (Optional)</label>
+                    <textarea id="additionalNotes" name="additionalNotes" rows="3" style="width: 100%; padding: 12px 15px; border: 1px solid #444; border-radius: 6px; font-size: 1rem; background-color: #2c2c2c; color: #fff;"></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Confirm Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Toggle dropdown menu
+        function toggleDropdown() {
+            const dropdown = document.getElementById('dropdownMenu');
+            dropdown.classList.toggle('show-dropdown');
+        }
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('dropdownMenu');
+            const logo = document.querySelector('.logo');
+            
+            if (!logo.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.classList.remove('show-dropdown');
+            }
+        });
+        
+        // Keep dropdown open when clicking on it
+        document.getElementById('dropdownMenu').addEventListener('click', function(event) {
+            event.stopPropagation();
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Booking Modal Functionality
+        const modal = document.getElementById('bookingModal');
+        const bookButtons = document.querySelectorAll('.book-btn');
+        const closeModalBtn = document.getElementById('closeModal');
+        const serviceNameInput = document.getElementById('serviceName');
+        const servicePriceInput = document.getElementById('servicePrice');
+        const modalServiceName = document.getElementById('modalServiceName');
+        const costInput = document.getElementById('cost');
+        const entryDateInput = document.getElementById('entryDate');
+
+        // Set minimum date as today
+        const today = new Date().toISOString().split('T')[0];
+        entryDateInput.setAttribute('min', today);
+
+        // Add event listeners to all book buttons
+        bookButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const serviceName = button.getAttribute('data-service');
+                const servicePrice = button.getAttribute('data-price');
+                
+                // Set values in the form
+                serviceNameInput.value = serviceName;
+                servicePriceInput.value = servicePrice;
+                modalServiceName.textContent = serviceName;
+                costInput.value = 'Rs' + servicePrice;
+                
+                // Show the modal
+                modal.style.display = 'flex';
+            });
+        });
+
+        // Close modal when clicking on close button
+        closeModalBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>
