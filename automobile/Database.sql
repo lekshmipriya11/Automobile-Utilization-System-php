@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.42, for Win64 (x86_64)
 --
--- Host: localhost    Database: art_gallery
+-- Host: localhost    Database: automobile
 -- ------------------------------------------------------
 -- Server version	8.0.42
 
@@ -16,251 +16,167 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `art_categories`
+-- Table structure for table `appointments`
 --
 
-DROP TABLE IF EXISTS `art_categories`;
+DROP TABLE IF EXISTS `appointments`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `art_categories` (
-  `category_id` int NOT NULL AUTO_INCREMENT,
-  `category_name` varchar(100) NOT NULL,
-  PRIMARY KEY (`category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `art_categories`
---
-
-LOCK TABLES `art_categories` WRITE;
-/*!40000 ALTER TABLE `art_categories` DISABLE KEYS */;
-INSERT INTO `art_categories` VALUES (1,'Paitings'),(3,'Sculptures'),(4,'Photography');
-/*!40000 ALTER TABLE `art_categories` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `art_subcategories`
---
-
-DROP TABLE IF EXISTS `art_subcategories`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `art_subcategories` (
-  `subcategory_id` int NOT NULL AUTO_INCREMENT,
-  `subcategory_name` varchar(100) NOT NULL,
-  `category_id` int NOT NULL,
-  PRIMARY KEY (`subcategory_id`)
+CREATE TABLE `appointments` (
+  `appointment_id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `vehicle_model` varchar(100) NOT NULL,
+  `service_type` varchar(100) NOT NULL,
+  `appointment_date` date NOT NULL,
+  `message` text NOT NULL,
+  `user_id` varchar(45) NOT NULL,
+  PRIMARY KEY (`appointment_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `art_subcategories`
+-- Dumping data for table `appointments`
 --
 
-LOCK TABLES `art_subcategories` WRITE;
-/*!40000 ALTER TABLE `art_subcategories` DISABLE KEYS */;
-INSERT INTO `art_subcategories` VALUES (1,'Oil Paitings',1),(2,'Watercolor',1),(3,'Acrylic',1),(4,'Marble',3),(5,'Wood',3),(6,'Bronze',3),(7,'Black & White',4),(8,'Portrait',4),(9,'Landscape',4),(10,'Black & White',4);
-/*!40000 ALTER TABLE `art_subcategories` ENABLE KEYS */;
+LOCK TABLES `appointments` WRITE;
+/*!40000 ALTER TABLE `appointments` DISABLE KEYS */;
+INSERT INTO `appointments` VALUES (1,'Lekshmi Shaji','lekshmipriyashaji@gmail.com','09747332510','Hyundai i20','Car Wash','2025-10-10','Complete immediately.',''),(2,'Lekshmi Arun','arun@gmail.com','09747332510','Toyota Fortuner  2025','Oil Change','2025-10-10','Complete immediately.',''),(3,'Arunkumar','arunkem@gmail.com','01234567890','Innova Crysta 2022','Car Wash','2025-10-11','gsshkllk',''),(4,'ddjsjd','arunkem@gmail.com','01234567890','Innova Crysta 2022','Engine Repair','2025-10-11','jdwkmldkwd',''),(5,'xsxs','lekshmipriyashaji@gmail.com','09747332510','Hyundai i20','Painting','3333-02-11','sdc','guest'),(7,'scsc','lekshmipriyashaji@gmail.com','09747332510','Hyundai i20','Engine Repair','3333-02-11','dcsc','guest'),(8,'s','lekshmipriyashaji@gmail.com','09747332510','Hyundai i20','Engine Repair','3333-02-11','bv','guest'),(9,'q','lekshmipriyashaji@gmail.com','09747332510','Hyundai i20','Oil Change','3333-02-11','s','guest'),(10,'q','lekshmipriyashaji@gmail.com','09747332510','Hyundai i20','Oil Change','3333-02-11','s','guest');
+/*!40000 ALTER TABLE `appointments` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `bookings`
+-- Table structure for table `department_details`
 --
 
-DROP TABLE IF EXISTS `bookings`;
+DROP TABLE IF EXISTS `department_details`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `bookings` (
-  `booking_id` int NOT NULL AUTO_INCREMENT,
-  `register_id` int NOT NULL,
-  `ticket_id` int NOT NULL,
-  `quantity` int NOT NULL,
-  `booking_date` date NOT NULL,
-  PRIMARY KEY (`booking_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `department_details` (
+  `department_id` int NOT NULL AUTO_INCREMENT,
+  `department_name` varchar(45) NOT NULL,
+  PRIMARY KEY (`department_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `bookings`
+-- Dumping data for table `department_details`
 --
 
-LOCK TABLES `bookings` WRITE;
-/*!40000 ALTER TABLE `bookings` DISABLE KEYS */;
-INSERT INTO `bookings` VALUES (1,1,2,3,'2025-10-02'),(2,1,2,3,'2025-10-02'),(3,1,1,3,'2025-10-04'),(4,1,2,2,'2025-10-07'),(5,1,1,1,'2025-10-07');
-/*!40000 ALTER TABLE `bookings` ENABLE KEYS */;
+LOCK TABLES `department_details` WRITE;
+/*!40000 ALTER TABLE `department_details` DISABLE KEYS */;
+/*!40000 ALTER TABLE `department_details` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `cart`
+-- Table structure for table `payment`
 --
 
-DROP TABLE IF EXISTS `cart`;
+DROP TABLE IF EXISTS `payment`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `cart` (
-  `cart_id` int NOT NULL AUTO_INCREMENT,
-  `register_id` int NOT NULL,
-  `gallery_id` int NOT NULL,
-  `added_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `quantity` int NOT NULL DEFAULT '1',
-  PRIMARY KEY (`cart_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `cart`
---
-
-LOCK TABLES `cart` WRITE;
-/*!40000 ALTER TABLE `cart` DISABLE KEYS */;
-INSERT INTO `cart` VALUES (13,1,3,'2025-10-07 09:40:40',1),(14,1,8,'2025-10-07 09:50:14',1);
-/*!40000 ALTER TABLE `cart` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `events`
---
-
-DROP TABLE IF EXISTS `events`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `events` (
-  `event_id` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) NOT NULL,
-  `description` varchar(255) NOT NULL,
-  `event_date` date NOT NULL,
-  `location` varchar(255) NOT NULL,
-  `image` varchar(255) NOT NULL,
-  `category_id` varchar(45) NOT NULL,
-  PRIMARY KEY (`event_id`)
+CREATE TABLE `payment` (
+  `payment_id` int NOT NULL AUTO_INCREMENT,
+  `appointment_id` varchar(45) NOT NULL,
+  `amount` varchar(45) NOT NULL,
+  `payment_method` varchar(50) NOT NULL,
+  `used_id` varchar(45) NOT NULL,
+  `payment_date` varchar(45) NOT NULL,
+  PRIMARY KEY (`payment_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `events`
+-- Dumping data for table `payment`
 --
 
-LOCK TABLES `events` WRITE;
-/*!40000 ALTER TABLE `events` DISABLE KEYS */;
-INSERT INTO `events` VALUES (1,'asdhhklm;l,m','sxsdgfjgb','2025-10-11','Kottayam','1759398133_e3.jpg','1'),(2,'Impressionist Masters','A collection of original impressionist paintings showcasing light and color in everyday life.','2025-11-01','National Art Museum, Delhi','1759396029_e1.jpg','1'),(3,'Sculpting Modernity','Large-scale contemporary sculptures redefining form and space.','2025-11-12','Modern Arts Gallery, Mumbai','1759401193_persistence_of_memory.jpg','3');
-/*!40000 ALTER TABLE `events` ENABLE KEYS */;
+LOCK TABLES `payment` WRITE;
+/*!40000 ALTER TABLE `payment` DISABLE KEYS */;
+INSERT INTO `payment` VALUES (1,'5','500','Credit Card','',''),(2,'6','500','Debit Card','',''),(3,'6','500','Debit Card','','');
+/*!40000 ALTER TABLE `payment` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `gallery`
+-- Table structure for table `service`
 --
 
-DROP TABLE IF EXISTS `gallery`;
+DROP TABLE IF EXISTS `service`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `gallery` (
-  `gallery_id` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(255) NOT NULL,
-  `image` varchar(255) NOT NULL,
-  `description` text NOT NULL,
-  `price` varchar(255) NOT NULL,
-  `artist` varchar(255) NOT NULL,
-  `subcategory_id` varchar(45) NOT NULL,
-  PRIMARY KEY (`gallery_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `gallery`
---
-
-LOCK TABLES `gallery` WRITE;
-/*!40000 ALTER TABLE `gallery` DISABLE KEYS */;
-INSERT INTO `gallery` VALUES (1,'Starry Night','1759226622_starry_night.jpg','A famous painting of a night sky filled with swirling stars.','50000','Vincent van Gogh',''),(2,'The Persistence of Memory','1759226714_persistence_of_memory.jpg','Surreal painting featuring melting clocks.bbb','75000','Salvador Dalí','1'),(3,'Mona Lisa','1759226916_monalisa.jpeg','One of the most famous portrait paintings in the world.','120000','Leonardo da Vinci','1'),(8,'Girl with a Pearl Earring','1759830600_johannes.jpeg','Elegant Dutch Golden Age portrait.','13000','Johannes Vermeer','8');
-/*!40000 ALTER TABLE `gallery` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `orders`
---
-
-DROP TABLE IF EXISTS `orders`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `orders` (
-  `order_id` int NOT NULL AUTO_INCREMENT,
-  `register_id` varchar(100) NOT NULL,
-  `gallery_id` varchar(150) NOT NULL,
-  `quantity` varchar(45) NOT NULL,
-  `total_amount` decimal(10,2) NOT NULL,
-  `order_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `status` enum('Pending','Completed','Delivered') NOT NULL DEFAULT 'Pending',
-  PRIMARY KEY (`order_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `orders`
---
-
-LOCK TABLES `orders` WRITE;
-/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (1,'1','4','1',245000.00,'2025-10-04 12:22:16','Delivered'),(2,'1','3','1',245000.00,'2025-10-04 12:22:16','Completed'),(3,'1','1','1',245000.00,'2025-10-04 12:22:16','Delivered'),(4,'1','2','1',245000.00,'2025-10-04 12:22:16','Completed'),(5,'1','3','1',120000.00,'2025-10-04 12:38:15','Completed'),(6,'1','3','1',195000.00,'2025-10-07 14:21:12','Pending'),(7,'1','2','1',195000.00,'2025-10-07 14:21:12','Pending');
-/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `registration`
---
-
-DROP TABLE IF EXISTS `registration`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `registration` (
-  `register_id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(225) NOT NULL,
-  `email` varchar(225) NOT NULL,
-  `phone` varchar(45) NOT NULL,
-  `gender` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
-  PRIMARY KEY (`register_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `registration`
---
-
-LOCK TABLES `registration` WRITE;
-/*!40000 ALTER TABLE `registration` DISABLE KEYS */;
-INSERT INTO `registration` VALUES (1,'Lekshmipriya Shaji','arun@gmail.com','1234567890','Female','lekshmi@11'),(2,'Arunkumar','arunkem@gmail.com','8281630528','M','arun'),(3,'Vishnu E Shaji','vishnushaji@gmail.com','9961045659','M','vishnu'),(5,'Anjitha','anjitha@gmail.com','1234567890','F','anjitha');
-/*!40000 ALTER TABLE `registration` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `tickets`
---
-
-DROP TABLE IF EXISTS `tickets`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tickets` (
-  `ticket_id` int NOT NULL AUTO_INCREMENT,
-  `ticket_name` varchar(255) NOT NULL,
-  `description` varchar(255) NOT NULL,
+CREATE TABLE `service` (
+  `service_id` int NOT NULL AUTO_INCREMENT,
+  `service_name` varchar(100) NOT NULL,
+  `description` varchar(225) NOT NULL,
   `price` varchar(45) NOT NULL,
-  `image` varchar(255) NOT NULL,
-  `event_id` varchar(45) NOT NULL,
-  `ticket_type` varchar(45) NOT NULL,
-  `quantity` varchar(45) NOT NULL,
-  PRIMARY KEY (`ticket_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`service_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tickets`
+-- Dumping data for table `service`
 --
 
-LOCK TABLES `tickets` WRITE;
-/*!40000 ALTER TABLE `tickets` DISABLE KEYS */;
-INSERT INTO `tickets` VALUES (1,'Impressionist Masters','A collection of original impressionist paintings showcasing light and color in everyday life.','150','1759400242','2','Impressionist Masters','96'),(2,'Sculpting Modernity','Large-scale contemporary sculptures redefining form and space.','500','1759401259','3','Sculpting Modernity','92');
-/*!40000 ALTER TABLE `tickets` ENABLE KEYS */;
+LOCK TABLES `service` WRITE;
+/*!40000 ALTER TABLE `service` DISABLE KEYS */;
+INSERT INTO `service` VALUES (1,'General Services','Full vehicle inspection, oil check, tire & brakes check','1500.00'),(2,'Engine Repair','Repair or replace engine parts to ensure optimal performance','5000'),(3,'Oil Change','Replace engine oil and oil filter','800'),(4,'Car Wash','Complete exterior and interior car cleaning','500'),(5,'AC Repair','Air conditioning inspection, repair, and recharge','2500'),(6,'Pinting','Vehicle painting for scratches, dents, or full body','7000'),(7,'Brake Service','Brake pad replacement and brake system inspection','1200'),(8,'Battery Replacement','Replace old battery with new, check electrical system','2000'),(9,'Wheel Alignment','Adjust wheel angles to manufacturer specifications','1000'),(10,'Tire Replacement','Replace old tires with new ones','3000'),(11,'Suspension Repair','Inspect and repair shocks, struts, and suspension system','4000'),(12,'Transmission Service','Full transmission check, repair, or fluid replacement','4500');
+/*!40000 ALTER TABLE `service` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `staff_signup`
+--
+
+DROP TABLE IF EXISTS `staff_signup`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `staff_signup` (
+  `staff_id` int NOT NULL AUTO_INCREMENT,
+  `staff_name` varchar(255) NOT NULL,
+  `email` varchar(300) NOT NULL,
+  `phone` varchar(300) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `department_name` varchar(255) NOT NULL,
+  PRIMARY KEY (`staff_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `staff_signup`
+--
+
+LOCK TABLES `staff_signup` WRITE;
+/*!40000 ALTER TABLE `staff_signup` DISABLE KEYS */;
+INSERT INTO `staff_signup` VALUES (14,'Babumon','babuttan@gmail.com','7561094095','$2y$10$/jp6dXDNKia/.TWo/rHiquHi3WgzuRwJIHwF1vHQspSH8TLfj3tpq','firedancer'),(15,'babumon','babuttan@gmail.com','7561094095','$2y$10$wjv8t.WcoQobR7QtzdbboO2UJVletYNUP68dTE7xlACJUmasNCwJK','firedancer'),(16,'babu','Muhammedismail15@gmail.com','9874563210','$2y$10$ru3AvEJpezUQ6SeRXmhjxeIVuog8Im0ep2hXRB5gNcprO7EAuXp5u','babu'),(17,'Lekshmi','lekshmipriyashaji@gmail.com','1234567890','$2y$10$H/TMP9vQnoIRlm0ofyj5deBStpIY/81iyS2oJB7k7AznMQLQ6rgeC','HR');
+/*!40000 ALTER TABLE `staff_signup` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_registration`
+--
+
+DROP TABLE IF EXISTS `user_registration`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `user_registration` (
+  `user_id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(45) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `address` varchar(45) NOT NULL,
+  `phone` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_registration`
+--
+
+LOCK TABLES `user_registration` WRITE;
+/*!40000 ALTER TABLE `user_registration` DISABLE KEYS */;
+INSERT INTO `user_registration` VALUES (1,'MOHAMMED','$2y$10$qc8BIpPs6SyVwsC86yX6SuLrto17WwcFL5PceNnVRbHGEVsktXBqO','Madathil house','7561094095','Muhammedismail15@gmail.com'),(2,'MOHAMMED','$2y$10$AovqXTPvSyMHSlVBEFSqHOa9t4V5tZiGMp6RhH0NX/bw1VsSVQQle','Madathil house','7561094095','Muhammedismail15@gmail.com'),(3,'salman','$2y$10$HKzOTMyXfBgZZdtX2KoVA.m0mndYEUVFZjATlhpLy7U9ptixlN.a.','Madathilhouse','7561094092','salman@gmail.com'),(4,'anupama','$2y$10$PQIIGg3ky9UbIbGMKrG4rOS.1JZ0bdhT88Dv85tMZ2p2xNIiFvEE.','kuttakatt','7895425522','anuparu@gmail.com'),(5,'anupama','$2y$10$VffWXmxi9sLfTif9apKh3et1T2qg06Nc.F0mrl4H8UJEATpeGA5ky','kuttakatt','7895425522','anuparu@gmail.com'),(6,'anupama','$2y$10$6enWofYUFDUm43b0zGzMGOLedGV.6ZvcpMjxB7m6IGfivOxsLDFlG','kuttakatt','7895425522','anuparu@gmail.com'),(7,'anupama','$2y$10$.nS3uVyOHpSbv1YfnpgGnOI/sArUiNET/Fasd2m2iZdZ0k3J.pztK','kuttakatt','7895425522','anuparu@gmail.com'),(8,'hrithin','$2y$10$WvVUX9YTa7il5SSPgiBUieLCtpfPN3N1o4l7LJ83zpToYxFBdcuHW','kinattukattam','9874563210','hrithin@gmail.com'),(9,'Lekshmi','$2y$10$rKvyRP7GMTKvO8aw9GuvhuGjfCjD/4d1b6Kc3LFsCMiwBK4KGiRJq','gfhkmknn','9747332510','lekshmipriyashaji@gmail.com');
+/*!40000 ALTER TABLE `user_registration` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -272,4 +188,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-10-10 16:19:15
+-- Dump completed on 2025-10-11 11:07:27

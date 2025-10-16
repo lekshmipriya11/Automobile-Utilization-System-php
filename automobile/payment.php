@@ -73,58 +73,120 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             flex-direction: column;
         }
 
-        /* --- NAVBAR --- */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 18px 50px;
-            background: rgba(0, 0, 0, 0.85);
-            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background: rgba(0, 0, 0, 0.85);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
 
-        .logo {
-            font-size: 26px;
-            font-weight: 700;
-            color: #ff4d00;
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-        }
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: #ff4d00;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      cursor: pointer;
+    }
 
-        .logo i {
-            margin-right: 8px;
-            color: #ff4d00;
-        }
+    .logo i {
+      margin-right: 10px;
+      color: #ff4d00;
+    }
 
-        .nav-links {
-            display: flex;
-            gap: 25px;
-            align-items: center;
-        }
+    .logo-dropdown {
+      position: relative;
+      display: inline-block;
+    }
 
-        .nav-links a {
-            text-decoration: none;
-            color: #fff;
-            font-size: 17px;
-            font-weight: 500;
-            padding: 8px 15px;
-            border-radius: 5px;
-            transition: 0.3s;
-        }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: rgba(15, 15, 15, 0.98);
+      min-width: 220px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #ff4d00;
+      margin-top: 10px;
+      transition: opacity 0.3s ease;
+    }
 
-        .nav-links a:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: #ff4d00;
-        }
+    .dropdown-content a {
+      color: #fff;
+      padding: 14px 18px;
+      text-decoration: none;
+      display: block;
+      transition: 0.3s;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
 
-        .nav-links a.active {
-            background: #ff4d00;
-            color: #fff;
-        }
+    .dropdown-content a:last-child {
+      border-bottom: none;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #ff4d00;
+      padding-left: 22px;
+    }
+
+    .dropdown-content a i {
+      margin-right: 10px;
+      width: 20px;
+      text-align: center;
+    }
+
+    .show-dropdown {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 500;
+      padding: 8px 15px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ff4d00;
+    }
+
+    .nav-links a.active {
+      background: #ff4d00;
+      color: #fff;
+    }
 
         /* --- Profile Dropdown --- */
         .profile-dropdown {
@@ -180,9 +242,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 opacity: 1;
                 transform: translateY(0);
             }
-        }
-
-        /* --- PAYMENT FORM --- */
+        }        /* --- PAYMENT FORM --- */
         .payment-wrapper {
             flex: 1;
             display: flex;
@@ -336,7 +396,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 
-    <script>
+   <script>
+        // Toggle dropdown menu
+        function toggleDropdown() {
+            const dropdown = document.getElementById('dropdownMenu');
+            dropdown.classList.toggle('show-dropdown');
+        }
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('dropdownMenu');
+            const logo = document.querySelector('.logo');
+            
+            if (!logo.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.classList.remove('show-dropdown');
+            }
+        });
+        
+        // Keep dropdown open when clicking on it
+        document.getElementById('dropdownMenu').addEventListener('click', function(event) {
+            event.stopPropagation();
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+     <script>
         function toggleProfileDropdown() {
             const profileMenu = document.getElementById('profileMenu');
             profileMenu.classList.toggle('show-dropdown');
